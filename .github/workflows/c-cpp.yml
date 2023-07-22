@@ -14,4 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make-binary
-      run: make clean debug
+      run: ./make-bin.sh release
+      shell: bash
+      
+    - name: run-tests
+      run: ./fusebmc_test.sh
+      shell: bash
+      
+    - name: test-coverage
+      run: ./testcov_test.sh
+      shell: bash
