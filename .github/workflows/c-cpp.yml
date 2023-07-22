@@ -14,11 +14,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make-binary
-      run: ./make-bin.sh release
+      run: |
+          mkdir -p test-release
+           ./make-bin.sh test-release
       shell: bash
       
     - name: run-tests
-      run: ./fusebmc_test.sh
+      run: |
+           chmod 755 ./fusebmc_test.sh
+           ./fusebmc_test.sh
       shell: bash
       
     - name: test-coverage
